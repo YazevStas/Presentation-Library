@@ -1,22 +1,22 @@
 [
   {
     "id": 1,
-    "title": "Титульный слайд (Обложка)",
-    "category": "Шаблоны обложек",
+    "title": "Титульный слайд",
+    "category": "Вводные слайды",
     "preview_url": "https://yazevstas.github.io/Presentation-Library/previews/Slide1.jpg",
     "slide_url": "https://raw.githubusercontent.com/YazevStas/Presentation-Library/refs/heads/main/encoded/slide_1.txt"
   },
   {
     "id": 2,
-    "title": "Введение и цели презентации",
-    "category": "Информационные слайды",
+    "title": "Оглавление",
+    "category": "Вводные слайды",
     "preview_url": "https://yazevstas.github.io/Presentation-Library/previews/Slide2.jpg",
     "slide_url": "https://raw.githubusercontent.com/YazevStas/Presentation-Library/refs/heads/main/encoded/slide_2.txt"
   },
   {
     "id": 3,
-    "title": "Ключевая проблема (Кейс)",
-    "category": "Информационные слайды",
+    "title": "Введение",
+    "category": "Вводные слайды",
     "preview_url": "https://yazevstas.github.io/Presentation-Library/previews/Slide3.jpg",
     "slide_url": "https://raw.githubusercontent.com/YazevStas/Presentation-Library/refs/heads/main/encoded/slide_3.txt"
   },
@@ -43,22 +43,22 @@
   },
   {
     "id": 7,
-    "title": "Преимущества решения (2 колонки с иконками)",
-    "category": "Списки и тезисы",
+    "title": "Ключевые метрики и показатели (3 карточки)",
+    "category": "Диаграммы и аналитика",
     "preview_url": "https://yazevstas.github.io/Presentation-Library/previews/Slide7.jpg",
     "slide_url": "https://raw.githubusercontent.com/YazevStas/Presentation-Library/refs/heads/main/encoded/slide_7.txt"
   },
   {
     "id": 8,
-    "title": "Инфографика: Описание продукта (слайд с телефоном)",
-    "category": "Инфографика продукта",
+    "title": "Главная метрика (Крупный показатель)",
+    "category": "Диаграммы и аналитика",
     "preview_url": "https://yazevstas.github.io/Presentation-Library/previews/Slide8.jpg",
     "slide_url": "https://raw.githubusercontent.com/YazevStas/Presentation-Library/refs/heads/main/encoded/slide_8.txt"
   },
   {
     "id": 9,
     "title": "Спецификация и характеристики",
-    "category": "Инфографика продукта",
+    "category": "Диаграммы и аналитика",
     "preview_url": "https://yazevstas.github.io/Presentation-Library/previews/Slide9.jpg",
     "slide_url": "https://raw.githubusercontent.com/YazevStas/Presentation-Library/refs/heads/main/encoded/slide_9.txt"
   },
@@ -71,126 +71,126 @@
   },
   {
     "id": 11,
-    "title": "Финансовые показатели (График)",
-    "category": "Диаграммы и аналитика",
+    "title": "Характеристики и свойства объекта (6 выносок)",
+    "category": "Инфографика продукта",
     "preview_url": "https://yazevstas.github.io/Presentation-Library/previews/Slide11.jpg",
     "slide_url": "https://raw.githubusercontent.com/YazevStas/Presentation-Library/refs/heads/main/encoded/slide_11.txt"
   },
   {
     "id": 12,
-    "title": "Диаграмма распределения рынка",
-    "category": "Диаграммы и аналитика",
+    "title": "Хронология",
+    "category": "Процессы и таймлайны",
     "preview_url": "https://yazevstas.github.io/Presentation-Library/previews/Slide12.jpg",
     "slide_url": "https://raw.githubusercontent.com/YazevStas/Presentation-Library/refs/heads/main/encoded/slide_12.txt"
   },
   {
     "id": 13,
-    "title": "Гистограмма роста продаж",
-    "category": "Диаграммы и аналитика",
+    "title": "Команда",
+    "category": "Схемы и концепции",
     "preview_url": "https://yazevstas.github.io/Presentation-Library/previews/Slide13.jpg",
     "slide_url": "https://raw.githubusercontent.com/YazevStas/Presentation-Library/refs/heads/main/encoded/slide_13.txt"
   },
   {
     "id": 14,
-    "title": "Анализ конкурентной среды",
+    "title": "График роста продаж",
     "category": "Диаграммы и аналитика",
     "preview_url": "https://yazevstas.github.io/Presentation-Library/previews/Slide14.jpg",
     "slide_url": "https://raw.githubusercontent.com/YazevStas/Presentation-Library/refs/heads/main/encoded/slide_14.txt"
   },
   {
     "id": 15,
-    "title": "Обзор целевой аудитории (Портрет клиента)",
-    "category": "Информационные слайды",
+    "title": "Карта этапов",
+    "category": "Диаграммы и графики",
     "preview_url": "https://yazevstas.github.io/Presentation-Library/previews/Slide15.jpg",
     "slide_url": "https://raw.githubusercontent.com/YazevStas/Presentation-Library/refs/heads/main/encoded/slide_15.txt"
   },
   {
     "id": 16,
-    "title": "Хронология (Таймлайн презентации)",
-    "category": "Таймлайны и процессы",
+    "title": "Таблица продаж",
+    "category": "Диаграммы и графики",
     "preview_url": "https://yazevstas.github.io/Presentation-Library/previews/Slide16.jpg",
     "slide_url": "https://raw.githubusercontent.com/YazevStas/Presentation-Library/refs/heads/main/encoded/slide_16.txt"
   },
   {
     "id": 17,
-    "title": "Дорожная карта разработки продукта",
-    "category": "Таймлайны и процессы",
+    "title": "Набор иконок из презентации",
+    "category": "Визуальные ресурсы",
     "preview_url": "https://yazevstas.github.io/Presentation-Library/previews/Slide17.jpg",
     "slide_url": "https://raw.githubusercontent.com/YazevStas/Presentation-Library/refs/heads/main/encoded/slide_17.txt"
   },
   {
     "id": 18,
-    "title": "План проекта по вехам (Milestones)",
-    "category": "Таймлайны и процессы",
+    "title": "Графические ресурсы - стрелочки",
+    "category": "Визуальные ресурсы",
     "preview_url": "https://yazevstas.github.io/Presentation-Library/previews/Slide18.jpg",
     "slide_url": "https://raw.githubusercontent.com/YazevStas/Presentation-Library/refs/heads/main/encoded/slide_18.txt"
   },
   {
     "id": 19,
-    "title": "Набор иконок: Бизнес и Технологии",
+    "title": "Графические ресурсы - схемы",
     "category": "Визуальные ресурсы",
     "preview_url": "https://yazevstas.github.io/Presentation-Library/previews/Slide19.jpg",
     "slide_url": "https://raw.githubusercontent.com/YazevStas/Presentation-Library/refs/heads/main/encoded/slide_19.txt"
   },
   {
     "id": 20,
-    "title": "Набор иконок: Маркетинг и SEO",
+    "title": "Графические ресурсы - таблицы",
     "category": "Визуальные ресурсы",
     "preview_url": "https://yazevstas.github.io/Presentation-Library/previews/Slide20.jpg",
     "slide_url": "https://raw.githubusercontent.com/YazevStas/Presentation-Library/refs/heads/main/encoded/slide_20.txt"
   },
   {
     "id": 21,
-    "title": "Конструктор графики: Стрелки и Процессы",
+    "title": "Графические ресурсы - фигуры",
     "category": "Визуальные ресурсы",
     "preview_url": "https://yazevstas.github.io/Presentation-Library/previews/Slide21.jpg",
     "slide_url": "https://raw.githubusercontent.com/YazevStas/Presentation-Library/refs/heads/main/encoded/slide_21.txt"
   },
   {
     "id": 22,
-    "title": "Конструктор графики: Круговые циклы",
+    "title": "Графические ресурсы - разное",
     "category": "Визуальные ресурсы",
     "preview_url": "https://yazevstas.github.io/Presentation-Library/previews/Slide22.jpg",
     "slide_url": "https://raw.githubusercontent.com/YazevStas/Presentation-Library/refs/heads/main/encoded/slide_22.txt"
   },
   {
     "id": 23,
-    "title": "Конструктор графики: Пирамиды и Иерархии",
+    "title": "Иконки - разное",
     "category": "Визуальные ресурсы",
     "preview_url": "https://yazevstas.github.io/Presentation-Library/previews/Slide23.jpg",
     "slide_url": "https://raw.githubusercontent.com/YazevStas/Presentation-Library/refs/heads/main/encoded/slide_23.txt"
   },
   {
     "id": 24,
-    "title": "Векторные элементы: Диаграммы Венна",
+    "title": "Иконки безнеса и командой работы",
     "category": "Визуальные ресурсы",
     "preview_url": "https://yazevstas.github.io/Presentation-Library/previews/Slide24.jpg",
     "slide_url": "https://raw.githubusercontent.com/YazevStas/Presentation-Library/refs/heads/main/encoded/slide_24.txt"
   },
   {
     "id": 25,
-    "title": "Векторные элементы: Пазлы и Связи",
+    "title": "Иконки справки и аватарки",
     "category": "Визуальные ресурсы",
     "preview_url": "https://yazevstas.github.io/Presentation-Library/previews/Slide25.jpg",
     "slide_url": "https://raw.githubusercontent.com/YazevStas/Presentation-Library/refs/heads/main/encoded/slide_25.txt"
   },
   {
     "id": 26,
-    "title": "Конструктор графики: Шестеренки и Механизмы",
+    "title": "Иконки творчетса и исскуства",
     "category": "Визуальные ресурсы",
     "preview_url": "https://yazevstas.github.io/Presentation-Library/previews/Slide26.jpg",
     "slide_url": "https://raw.githubusercontent.com/YazevStas/Presentation-Library/refs/heads/main/encoded/slide_26.txt"
   },
   {
     "id": 27,
-    "title": "Информационные плашки и Сноски (Callouts)",
+    "title": "Иконки природы",
     "category": "Визуальные ресурсы",
     "preview_url": "https://yazevstas.github.io/Presentation-Library/previews/Slide27.jpg",
     "slide_url": "https://raw.githubusercontent.com/YazevStas/Presentation-Library/refs/heads/main/encoded/slide_27.txt"
   },
   {
     "id": 28,
-    "title": "Финальный слайд (Контакты / Q&A)",
+    "title": "Иконки маркетинг и SEO",
     "category": "Шаблоны обложек",
     "preview_url": "https://yazevstas.github.io/Presentation-Library/previews/Slide28.jpg",
     "slide_url": "https://raw.githubusercontent.com/YazevStas/Presentation-Library/refs/heads/main/encoded/slide_28.txt"
