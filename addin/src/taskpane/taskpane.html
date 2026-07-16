@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ъ<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8" />
@@ -12,39 +12,70 @@
             padding: 0;
             display: flex;
             height: 100vh;
-            background-color: #f3f2f1; /* Светлый фон PowerPoint */
+            background-color: #f3f2f1;
             color: #323130;
         }
-        /* Левое меню */
+        
+        /* ЛЕВОЕ МЕНЮ (Сайдбар) */
         .sidebar {
-            width: 70px;
+            width: 110px; /* Расширили для крупного текста */
             background-color: #ffffff;
             border-right: 1px solid #edebe9;
             display: flex;
             flex-direction: column;
             align-items: center;
             padding-top: 15px;
+            transition: width 0.3s ease; /* Плавное сворачивание */
         }
-        .menu-item {
-            width: 50px;
-            height: 50px;
+        /* Класс для свернутого состояния */
+        .sidebar.collapsed {
+            width: 60px;
+        }
+        .sidebar.collapsed .menu-text {
+            display: none; /* Прячем текст при сворачивании */
+        }
+
+        /* Иконка профиля и кнопка сворачивания */
+        .profile-icon {
+            font-size: 24px;
+            color: #605e5c;
             margin-bottom: 10px;
-            border-radius: 4px;
+            cursor: pointer;
+        }
+        .toggle-btn {
+            font-size: 18px;
+            color: #0078d4;
+            cursor: pointer;
+            margin-bottom: 20px;
+            padding: 5px;
+        }
+        .toggle-btn:hover { background-color: #f3f2f1; border-radius: 4px; }
+
+        .menu-item {
+            width: 90%;
+            padding: 8px 0;
+            margin-bottom: 5px;
+            border-radius: 6px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            font-size: 10px;
             cursor: pointer;
             color: #605e5c;
+            box-sizing: border-box;
         }
         .menu-item:hover, .menu-item.active {
             background-color: #f3f2f1;
-            color: #0078d4; /* Корпоративный синий */
+            color: #0078d4;
         }
-        .menu-icon { font-size: 18px; margin-bottom: 3px; }
+        .menu-icon { font-size: 20px; margin-bottom: 4px; }
+        .menu-text { 
+            font-size: 12px; /* Увеличили шрифт */
+            font-weight: 600;
+            text-align: center;
+        }
         
-        /* Правая часть */
+        /* ПРАВАЯ ЧАСТЬ */
         .main-content {
             flex-grow: 1;
             display: flex;
@@ -80,13 +111,14 @@
             border-radius: 4px;
             margin-bottom: 15px;
             outline: none;
+            font-size: 13px;
         }
         
-        /* Сетка карточек */
+        /* СЕТКА КАРТОЧЕК (Строго 2 колонки) */
         .catalog-container {
             display: grid;
-            grid-template-columns: 1fr 1fr; /* Два столбца */
-            gap: 10px;
+            grid-template-columns: repeat(2, 1fr); /* 2 равные колонки */
+            gap: 12px;
         }
         .slide-card {
             background-color: #ffffff;
@@ -97,39 +129,55 @@
             cursor: pointer;
         }
         .slide-card:hover {
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
         .slide-preview {
             width: 100%;
             height: auto;
             display: block;
+            border-bottom: 1px solid #edebe9;
         }
         
-        /* Кнопка плюсик (как на макете) */
+        /* Кнопка плюсик */
         .insert-btn {
             position: absolute;
-            bottom: 5px;
-            right: 5px;
+            bottom: 8px;
+            right: 8px;
             background-color: #ffffff;
             border: 1px solid #edebe9;
-            color: #323130;
-            width: 24px;
-            height: 24px;
+            color: #0078d4;
+            width: 28px;
+            height: 28px;
             border-radius: 4px;
+            font-size: 18px;
             font-weight: bold;
+            line-height: 1;
             cursor: pointer;
             box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .insert-btn:hover { background-color: #f3f2f1; }
         
         /* Инфо о слайде */
         .slide-info {
-            padding: 6px;
-            font-size: 10px;
-            font-weight: 600;
-            white-space: nowrap;
+            padding: 8px;
+            padding-right: 40px; /* Отступ чтобы текст не залезал под плюс */
+        }
+        .slide-title {
+            font-size: 11px;
+            font-weight: 700;
+            margin: 0 0 2px 0;
+            display: -webkit-box;
+            -webkit-line-clamp: 2; /* Максимум 2 строки */
+            -webkit-box-orient: vertical;
             overflow: hidden;
-            text-overflow: ellipsis;
+        }
+        .slide-category {
+            font-size: 9px;
+            color: #605e5c;
+            margin: 0;
         }
 
         .loading { font-size: 13px; color: #605e5c; text-align: center; }
@@ -137,43 +185,41 @@
 </head>
 <body>
     <!-- Левое меню -->
-    <div class="sidebar">
+    <div class="sidebar" id="sidebar">
+        <!-- Профиль и кнопка сворачивания (как в макете) -->
+        <div class="profile-icon" title="Профиль пользователя">👤</div>
+        <div class="toggle-btn" onclick="toggleSidebar()" title="Свернуть/Развернуть меню">⇆</div>
+
         <div class="menu-item active" onclick="filterCategory('')">
-            <div class="menu-icon">📁</div>
-            Все
+            <div class="menu-icon">📁</div><span class="menu-text">Все</span>
         </div>
-        <div class="menu-item" onclick="filterCategory('обложек')">
-            <div class="menu-icon">📄</div>
-            Обложки
-        </div>
-        <div class="menu-item" onclick="filterCategory('Информационные')">
-            <div class="menu-icon">📝</div>
-            Тексты
+        <div class="menu-item" onclick="filterCategory('Вводные')">
+            <div class="menu-icon">📄</div><span class="menu-text">Вводные</span>
         </div>
         <div class="menu-item" onclick="filterCategory('Списки')">
-            <div class="menu-icon">✅</div>
-            Списки
+            <div class="menu-icon">📝</div><span class="menu-text">Списки</span>
         </div>
+        <!-- Поиск "Диаграммы" найдет и "Диаграммы и аналитика" и "Диаграммы и графики" -->
         <div class="menu-item" onclick="filterCategory('Диаграммы')">
-            <div class="menu-icon">📊</div>
-            Графики
+            <div class="menu-icon">📊</div><span class="menu-text">Аналитика</span>
         </div>
-        <div class="menu-item" onclick="filterCategory('Таймлайны')">
-            <div class="menu-icon">⏳</div>
-            Процессы
+        <div class="menu-item" onclick="filterCategory('Инфографика')">
+            <div class="menu-icon">💡</div><span class="menu-text">Инфографика</span>
         </div>
-        <div class="menu-item" onclick="filterCategory('Визуальные')">
-            <div class="menu-icon">🎨</div>
-            Иконки
+        <div class="menu-item" onclick="filterCategory('Процессы')">
+            <div class="menu-icon">⏳</div><span class="menu-text">Процессы</span>
+        </div>
+        <div class="menu-item" onclick="filterCategory('Ресурсы')">
+            <div class="menu-icon">🎨</div><span class="menu-text">Ресурсы</span>
         </div>
     </div>
 
     <!-- Основной контент -->
     <div class="main-content">
-        <!-- Вкладки Публичное/Личное -->
+        <!-- Вкладки -->
         <div class="tabs">
-            <div class="tab active" id="tabPublic">Публичное</div>
-            <div class="tab" id="tabPrivate" onclick="alert('Функция Личного кабинета находится в разработке (Roadmap)')">Личное</div>
+            <div class="tab active">Публичное</div>
+            <div class="tab" onclick="alert('Функция Личного хранилища запланирована в Дорожной карте')">Личное</div>
         </div>
 
         <input type="text" id="searchInput" class="search-box" placeholder="🔍 Поиск слайдов и шаблонов..." />

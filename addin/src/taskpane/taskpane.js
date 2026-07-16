@@ -1,5 +1,4 @@
 /* global Office, PowerPoint */
-
 const CATALOG_URL = "https://yazevstas.github.io/Presentation-Library/catalog.json";
 let slidesCatalog = [];
 
@@ -16,7 +15,7 @@ async function loadCatalog() {
     slidesCatalog = await response.json();
     
     document.getElementById("loading").style.display = "none";
-    document.getElementById("catalog").style.display = "flex";
+    document.getElementById("catalog").style.display = "grid"; // Используем grid для 2 колонок
     
     renderSlides(slidesCatalog);
   } catch (error) {
@@ -30,7 +29,8 @@ function renderSlides(slides) {
   container.innerHTML = ""; 
 
   if (slides.length === 0) {
-    container.innerHTML = "<div class='loading'>Слайды не найдены</div>";
+    // Если ничего не найдено, растягиваем сообщение на 2 колонки
+    container.innerHTML = "<div class='loading' style='grid-column: span 2;'>Слайды не найдены</div>";
     return;
   }
 
@@ -38,19 +38,21 @@ function renderSlides(slides) {
     const card = document.createElement("div");
     card.className = "slide-card";
 
+    // Здесь та самая обновленная кнопка с плюсиком (+)
     card.innerHTML = `
       <img src="${slide.preview_url}" class="slide-preview" alt="${slide.title}">
       <div class="slide-info">
-        <p class="slide-title">${slide.title}</p>
-        <p class="slide-category">${slide.category}</p>
-        <button class="insert-btn" id="btn-${slide.id}">Вставить слайд</button>
+        <div class="text-block">
+          <p class="slide-title">${slide.title}</p>
+          <p class="slide-category">${slide.category}</p>
+        </div>
+        <button class="insert-btn" id="btn-${slide.id}" title="Вставить слайд">+</button>
       </div>
     `;
 
     container.appendChild(card);
 
     document.getElementById(`btn-${slide.id}`).addEventListener("click", () => {
-      // Передаем также ID кнопки, чтобы менять её цвет и текст
       insertSlide(slide.slide_url, `btn-${slide.id}`);
     });
   });
@@ -65,27 +67,23 @@ function handleSearch(event) {
   renderSlides(filteredSlides);
 }
 
-// УЛУЧШЕННАЯ ФУНКЦИЯ ВСТАВКИ
+// Улучшенная функция вставки с анимацией для маленькой кнопки
 async function insertSlide(slideTxtUrl, buttonId) {
   const btn = document.getElementById(buttonId);
-  const originalText = btn.innerText;
   
-  // Меняем дизайн кнопки на время загрузки
-  btn.innerText = "Загрузка слайда...";
-  btn.style.backgroundColor = "#ff9e64"; // Оранжевый цвет
+  // Меняем плюсик на песочные часы (Загрузка)
+  btn.innerText = "⏳";
+  btn.style.backgroundColor = "#ff9e64"; // Оранжевый
+  btn.style.color = "#ffffff";
 
   try {
-    // 1. Скачиваем текст Base64
     const response = await fetch(slideTxtUrl);
-    if (!response.ok) throw new Error("Не удалось скачать файл слайда");
+    if (!response.ok) throw new Error("Не удалось скачать файл");
     let base64String = await response.text();
 
-    // 2. ЖЕСТКАЯ ОЧИСТКА: удаляем все переносы строк, пробелы и невидимые символы
     base64String = base64String.replace(/[\r\n\s]+/g, "");
-    // На всякий случай удаляем префикс data:image/..., если конвертер его добавил
     base64String = base64String.replace(/^data:.*?;base64,/, "");
 
-    // 3. Вставка через Office.js
     await PowerPoint.run(async (context) => {
       context.presentation.insertSlidesFromBase64(base64String, {
         targetSlideId: null, 
@@ -94,36 +92,41 @@ async function insertSlide(slideTxtUrl, buttonId) {
       await context.sync();
     });
 
-    // 4. Если успех — кнопка зеленая
-    btn.innerText = "Успешно вставлено!";
-    btn.style.backgroundColor = "#9ece6a"; 
+    // Меняем на галочку (Успех)
+    btn.innerText = "✓";
+    btn.style.backgroundColor = "#9ece6a"; // Зеленый
     
-    // Возвращаем кнопку в исходное состояние через 3 секунды
+    // Возвращаем плюсик через 3 секунды
     setTimeout(() => {
-      btn.innerText = originalText;
-      btn.style.backgroundColor = "#00d2ff";
+      btn.innerText = "+";
+      btn.style.backgroundColor = ""; // Сброс стиля
+      btn.style.color = "";
     }, 3000);
 
   } catch (error) {
     console.error("Подробная ошибка:", error);
     
-    // 5. Если ошибка — кнопка красная, никаких alert()
-    btn.innerText = "Ошибка вставки";
-    btn.style.backgroundColor = "#f7768e"; 
+    // Меняем на крестик (Ошибка)
+    btn.innerText = "✖";
+    btn.style.backgroundColor = "#f7768e"; // Красный
     
     setTimeout(() => {
-      btn.innerText = originalText;
-      btn.style.backgroundColor = "#00d2ff";
+      btn.innerText = "+";
+      btn.style.backgroundColor = "";
+      btn.style.color = "";
     }, 3000);
   }
 }
 
 // Функция фильтрации по боковому меню
 function filterCategory(categoryName) {
-  // Подсвечиваем активный пункт меню
-  const items = document.querySelectorAll('.menu-item');
-  items.forEach(item => item.classList.remove('active'));
-  event.currentTarget.classList.add('active');
+  // Выделяем активный пункт меню синим
+  const e = window.event;
+  if (e && e.currentTarget) {
+      const items = document.querySelectorAll('.menu-item');
+      items.forEach(item => item.classList.remove('active'));
+      e.currentTarget.classList.add('active');
+  }
 
   // Фильтруем каталог
   if (categoryName === '') {
@@ -132,4 +135,10 @@ function filterCategory(categoryName) {
     const filtered = slidesCatalog.filter(slide => slide.category.includes(categoryName));
     renderSlides(filtered);
   }
+}
+
+// Функция сворачивания/разворачивания бокового меню
+function toggleSidebar() {
+  const sidebar = document.getElementById('sidebar');
+  sidebar.classList.toggle('collapsed');
 }
