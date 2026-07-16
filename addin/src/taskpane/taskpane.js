@@ -15,7 +15,7 @@ async function loadCatalog() {
     slidesCatalog = await response.json();
     
     document.getElementById("loading").style.display = "none";
-    document.getElementById("catalog").style.display = "grid"; // Используем grid для 2 колонок
+    document.getElementById("catalog").style.display = "grid";
     
     renderSlides(slidesCatalog);
   } catch (error) {
@@ -29,7 +29,6 @@ function renderSlides(slides) {
   container.innerHTML = ""; 
 
   if (slides.length === 0) {
-    // Если ничего не найдено, растягиваем сообщение на 2 колонки
     container.innerHTML = "<div class='loading' style='grid-column: span 2;'>Слайды не найдены</div>";
     return;
   }
@@ -38,7 +37,6 @@ function renderSlides(slides) {
     const card = document.createElement("div");
     card.className = "slide-card";
 
-    // Здесь та самая обновленная кнопка с плюсиком (+)
     card.innerHTML = `
       <img src="${slide.preview_url}" class="slide-preview" alt="${slide.title}">
       <div class="slide-info">
@@ -67,13 +65,10 @@ function handleSearch(event) {
   renderSlides(filteredSlides);
 }
 
-// Улучшенная функция вставки с анимацией для маленькой кнопки
 async function insertSlide(slideTxtUrl, buttonId) {
   const btn = document.getElementById(buttonId);
-  
-  // Меняем плюсик на песочные часы (Загрузка)
   btn.innerText = "⏳";
-  btn.style.backgroundColor = "#ff9e64"; // Оранжевый
+  btn.style.backgroundColor = "#ff9e64";
   btn.style.color = "#ffffff";
 
   try {
@@ -92,23 +87,18 @@ async function insertSlide(slideTxtUrl, buttonId) {
       await context.sync();
     });
 
-    // Меняем на галочку (Успех)
     btn.innerText = "✓";
-    btn.style.backgroundColor = "#9ece6a"; // Зеленый
-    
-    // Возвращаем плюсик через 3 секунды
+    btn.style.backgroundColor = "#9ece6a";
     setTimeout(() => {
       btn.innerText = "+";
-      btn.style.backgroundColor = ""; // Сброс стиля
+      btn.style.backgroundColor = "";
       btn.style.color = "";
     }, 3000);
 
   } catch (error) {
     console.error("Подробная ошибка:", error);
-    
-    // Меняем на крестик (Ошибка)
     btn.innerText = "✖";
-    btn.style.backgroundColor = "#f7768e"; // Красный
+    btn.style.backgroundColor = "#f7768e";
     
     setTimeout(() => {
       btn.innerText = "+";
@@ -120,7 +110,6 @@ async function insertSlide(slideTxtUrl, buttonId) {
 
 // Функция фильтрации по боковому меню
 function filterCategory(categoryName) {
-  // Выделяем активный пункт меню синим
   const e = window.event;
   if (e && e.currentTarget) {
       const items = document.querySelectorAll('.menu-item');
@@ -128,15 +117,17 @@ function filterCategory(categoryName) {
       e.currentTarget.classList.add('active');
   }
 
-  // Фильтруем каталог
   if (categoryName === '') {
-    renderSlides(slidesCatalog); // Показать всё
+    renderSlides(slidesCatalog);
   } else {
-    const filtered = slidesCatalog.filter(slide => slide.category.includes(categoryName));
+    // Делаем поиск независимым от регистра букв
+    const query = categoryName.toLowerCase();
+    const filtered = slidesCatalog.filter(slide => 
+      slide.category.toLowerCase().includes(query)
+    );
     renderSlides(filtered);
   }
 }
-
 // Функция сворачивания/разворачивания бокового меню
 function toggleSidebar() {
   const sidebar = document.getElementById('sidebar');

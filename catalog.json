@@ -65,7 +65,7 @@
   {
     "id": 10,
     "title": "Сравнение вариантов (Таблица)",
-    "category": "Таблицы и сравнения",
+    "category": "Диаграммы и таблицы",
     "preview_url": "https://yazevstas.github.io/Presentation-Library/previews/Slide10.jpg",
     "slide_url": "https://raw.githubusercontent.com/YazevStas/Presentation-Library/refs/heads/main/encoded/slide_10.txt"
   },
@@ -86,7 +86,7 @@
   {
     "id": 13,
     "title": "Команда",
-    "category": "Схемы и концепции",
+    "category": "Инфографика и схемы",
     "preview_url": "https://yazevstas.github.io/Presentation-Library/previews/Slide13.jpg",
     "slide_url": "https://raw.githubusercontent.com/YazevStas/Presentation-Library/refs/heads/main/encoded/slide_13.txt"
   },
