@@ -117,3 +117,19 @@ async function insertSlide(slideTxtUrl, buttonId) {
     }, 3000);
   }
 }
+
+// Функция фильтрации по боковому меню
+function filterCategory(categoryName) {
+  // Подсвечиваем активный пункт меню
+  const items = document.querySelectorAll('.menu-item');
+  items.forEach(item => item.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+
+  // Фильтруем каталог
+  if (categoryName === '') {
+    renderSlides(slidesCatalog); // Показать всё
+  } else {
+    const filtered = slidesCatalog.filter(slide => slide.category.includes(categoryName));
+    renderSlides(filtered);
+  }
+}

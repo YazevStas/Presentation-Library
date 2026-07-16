@@ -1,13 +1,7 @@
-# Зависимости Node.js (Самое главное!)
 addin/node_modules/
 node_modules/
-
-# Папка со сборкой готового плагина
 addin/dist/
-
-# Временные файлы кэша
 .npm
 *.log
-
-# Системные скрытые файлы macOS
 .DS_Store
+Slide_Library.pptx
